@@ -1,0 +1,7 @@
+setwd("C:/Users/Florian Bonnet/Documents/BI/COURSERA/Exploratory/")
+power<-read.csv("household_power_consumption.txt",header=TRUE,sep=";",na.strings="?")
+powersub<-subset(power,Date=="1/2/2007" | Date=="2/2/2007")
+time<-strptime(paste(powersub$Date,powersub$Time),format='%d/%m/%Y %H:%M:%S')
+png(filename="plot2.png")
+plot(x=time,y=powersub[,"Global_active_power"],type="l",ylab="Global Active Power (kilowatts)",main="", xlab="")
+dev.off()
